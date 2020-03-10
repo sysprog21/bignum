@@ -117,6 +117,10 @@ typedef unsigned __int128 uint128_t;
     } while (0)
 #endif
 
+#ifndef unlikely
+#define unlikely(x) __builtin_expect((x), 0)
+#endif
+
 /* The expression always executes, regardless of whether NDEBUG is defined
  * or not. This is intentional and sometimes useful.
  */
@@ -125,7 +129,7 @@ typedef unsigned __int128 uint128_t;
 #include <stdlib.h>
 #define ASSERT(expr)                                                           \
     do {                                                                       \
-        if (!__builtin_expect((expr), 0)) {                                    \
+        if (!unlikely(expr)) {                                                 \
             fprintf(stderr, "%s:%d (%s) assertion failed: \"%s\"\n", __FILE__, \
                     __LINE__, __PRETTY_FUNCTION__, #expr);                     \
             abort();                                                           \
@@ -134,7 +138,5 @@ typedef unsigned __int128 uint128_t;
 #else
 #define ASSERT(expr) (void) (expr)
 #endif
-
-#define unlikely(x) __builtin_expect((x), 0)
 
 #endif /* !_APM_INTERNAL_H_ */
