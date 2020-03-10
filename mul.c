@@ -168,7 +168,7 @@ void apm_mul(const apm_digit *u,
 
         /* Wanted: USIZE >= VSIZE. */
         if (ul < vl) {
-            SWAP(u, v, const apm_digit *);
+            SWAP(u, v);
             usize = vl;
             vsize = ul;
         } else {

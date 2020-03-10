@@ -153,7 +153,7 @@ void bn_add(const bn *a, const bn *b, bn *c)
         c->sign = a->sign;
     } else { /* Differing signs. */
         if (a->sign)
-            SWAP(a, b, const bn *);
+            SWAP(a, b);
 
         ASSERT(a->sign == 0);
         ASSERT(b->sign == 1);

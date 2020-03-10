@@ -279,7 +279,7 @@ static char *apm_get_str(const apm_digit *u,
     f[1] = '\0';
     /* Reverse digits */
     for (char *s = out; s < f; ++s, --f)
-        SWAP(*s, *f, char);
+        SWAP(*s, *f);
     return out;
 }
 

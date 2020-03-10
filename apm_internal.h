@@ -109,11 +109,11 @@ typedef unsigned __int128 uint128_t;
 #endif
 
 #ifndef SWAP
-#define SWAP(a, b, type)  \
-    do {                  \
-        type __tmp = (a); \
-        (a) = (b);        \
-        (b) = __tmp;      \
+#define SWAP(x, y)           \
+    do {                     \
+        typeof(x) __tmp = x; \
+        x = y;               \
+        y = __tmp;           \
     } while (0)
 #endif
 
