@@ -84,7 +84,29 @@
     } while (0)
 #endif
 
-/* FIXME: add portable digit_div implementation */
+#ifndef digit_div
+#if APM_DIGIT_SIZE == 4
+#define digit_div(n1, n0, d, q, r)                              \
+    do {                                                        \
+        uint64_t __d = (d);                                     \
+        uint64_t __n = ((uint64_t)(n1) << 32) | (uint64_t)(n0); \
+        (q) = (apm_digit)(__n / __d);                           \
+        (r) = (apm_digit)(__n % __d);                           \
+    } while (0)
+#elif APM_DIGIT_SIZE == 8
+/* GCC has builtin support for the types __int128. */
+typedef unsigned __int128 uint128_t;
+#define digit_div(n1, n0, d, q, r)                                 \
+    do {                                                           \
+        uint128_t __d = (d);                                       \
+        uint128_t __n = ((uint128_t)(n1) << 64) | (uint128_t)(n0); \
+        (q) = (apm_digit)(__n / __d);                              \
+        (r) = (apm_digit)(__n % __d);                              \
+    } while (0)
+#else
+#error "Unsupported platform"
+#endif
+#endif
 
 #ifndef SWAP
 #define SWAP(a, b, type)  \
