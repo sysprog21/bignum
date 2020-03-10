@@ -1,0 +1,7 @@
+fibonacci
+*.o
+*.o.d
+*.dSYM
+.vscode
+.devcontainer
+core*
