@@ -36,7 +36,7 @@ void bn_zero(bn *p);
 
 void bn_swap(bn *a, bn *b);
 
-void bn_lshift(const bn *q, unsigned int bits, bn *p);
+void bn_lshift(const bn *p, unsigned int bits, bn *q);
 
 /* S = A + B */
 void bn_add(const bn *a, const bn *b, bn *s);
