@@ -93,7 +93,7 @@ static void apm_sqr_base(const apm_digit *u, apm_size usize, apm_digit *v)
 /* Karatsuba squaring recursively applies the formula:
  *		U = U1*2^N + U0
  *		U^2 = (2^2N + 2^N)U1^2 - (U1-U0)^2 + (2^N + 1)U0^2
- * From my own testing this uses ~20% less time compared with slighly easier to
+ * From my own testing this uses ~20% less time compared with slightly easier to
  * code formula:
  *		U^2 = (2^2N)U1^2 + (2^(N+1))(U1*U0) + U0^2
  */
